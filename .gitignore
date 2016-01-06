@@ -4,5 +4,8 @@
 /upload/
 /protected/runtime/
 /source/
+/gulpfile.js
+/node_modules
+/package.json
 
 
