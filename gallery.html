@@ -1,14 +1,25 @@
-<!DOCTYPE HTML><html><head><title>路易十三瓶中世纪</title><meta http-equiv=Content-Type content="text/html; charset=utf-8"><meta name=format-detection content="telephone=no"><meta name=viewport content="width=device-width,initial-scale=1.0,user-scalable=0,minimum-scale=1.0,maximum-scale=1.0,minimal-ui"><meta name=apple-mobile-web-app-status-bar-style content=black><meta name=apple-mobile-web-app-capable content=yes><meta name=Keywords><meta name=Description content=...><link rel=stylesheet type=text/css href=css/all.min.css><script type=text/javascript src=js/main.min.js></script></head><body><div id=dreambox><div class=page id=galleryPage><a href=javascript:; class=logo><img src=img/logo.png width=100%></a><div class=gallery><div class=swipercon><div class=swiper-container><div class=swiper-wrapper id=galleryCon></div></div><div class=swiper-button-next></div><div class=swiper-button-prev></div></div><img src=img/place.jpg width=56% style=opacity:0;></div><a href=javascript:; class="btn video_btn"><img src=img/video_btn.png width=100%></a></div></div><div id=orientLayer class=mod-orient-layer><div class=mod-orient-layer__content><i class="icon mod-orient-layer__icon-orient"></i><div class=mod-orient-layer__desc>为了更好的体验，请使用竖屏浏览</div></div></div><script>
+<!DOCTYPE HTML><html><head><title>路易十三瓶中世纪</title><meta http-equiv=Content-Type content="text/html; charset=utf-8"><meta name=format-detection content="telephone=no"><meta name=viewport content="width=device-width,initial-scale=1.0,user-scalable=0,minimum-scale=1.0,maximum-scale=1.0,minimal-ui"><meta name=apple-mobile-web-app-status-bar-style content=black><meta name=apple-mobile-web-app-capable content=yes><meta name=Keywords><meta name=Description content=...><link rel=stylesheet type=text/css href=css/all.min.css><script type=text/javascript src=js/main.min.js></script></head><body><div class=sharePrompt><a href=javascript:; class=shareClose><img src=img/close.png width=100%></a></div><div id=dreambox><div class=page id=galleryPage><a href=javascript:; class=logo><img src=img/logo.png width=100%></a><div class=gallery><div class=swipercon><div class=swiper-container><div class=swiper-wrapper id=galleryCon></div></div><div class=swiper-button-next></div><div class=swiper-button-prev></div></div><img src=img/place.jpg width=56% style=opacity:0;></div><a href=javascript:; class="btn video_btn"><img src=img/video_btn.png width=100%></a> <a href=javascript:; class="btn share_btn"><img src=img/share_btn.png width=100%></a></div></div><div id=orientLayer class=mod-orient-layer><div class=mod-orient-layer__content><i class="icon mod-orient-layer__icon-orient"></i><div class=mod-orient-layer__desc>为了更好的体验，请使用竖屏浏览</div></div></div><script>
     
     var target = $("#galleryPage"), slideHtml = "", galleryImgArr = [];
 
     $.map(guests, function(v, k){
+
         if(v.id == cid){
             for(var i = 1; i <= v.num; i++ ){
                 galleryImgArr.push('img/photo/'+cid+'/p'+i+'.jpg');
                 slideHtml += '<div class="swiper-slide"><img src="img/photo/'+cid+'/p'+i+'.jpg" width="100%" /></div>';
             }
+
+            if(v.vid){
+                $(".video_btn").css("display", "inline-block");
+                touch.on(target, 'swipeup', function(ev){
+                    window.location.href = "video.html";
+                });
+            }else{
+                $(".share_btn").css("display", "inline-block");
+            };
         }
+
     })
 
     var loadingFun = function(imgSrcArr,finshReturnFun){
@@ -35,9 +46,14 @@
     loadingFun(galleryImgArr, finshReturnFun);
     
 
-    touch.on(target, 'swipeup', function(ev){
-        window.location.href = "video.html";
-    });
+    $(".share_btn").click(function(){
+        $(".sharePrompt").show();
+    })
+
+    $(".shareClose").click(function(){
+        $(".sharePrompt").hide();
+    })
+
 
 
 </script></body></html>

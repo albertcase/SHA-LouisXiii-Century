@@ -1,63 +1,58 @@
-<!DOCTYPE HTML><html><head><title>路易十三瓶中世纪</title><meta http-equiv=Content-Type content="text/html; charset=utf-8"><meta name=format-detection content="telephone=no"><meta name=viewport content="width=device-width,initial-scale=1.0,user-scalable=0,minimum-scale=1.0,maximum-scale=1.0,minimal-ui"><meta name=apple-mobile-web-app-status-bar-style content=black><meta name=apple-mobile-web-app-capable content=yes><meta name=Keywords><meta name=Description content=...><link rel=stylesheet type=text/css href=css/all.min.css><script type=text/javascript src=js/main.min.js></script></head><body><div id=dreambox><div class=page><a href=javascript:; class=logo><img src=img/logo.png width=100%></a><div class=video><div id=mod_player></div><div class=wifiTips>*建议在Wi-Fi环境下欣赏</div></div><a href=javascript:; class="btn share_btn"><img src=img/share_btn.png width=100%></a></div></div><div id=orientLayer class=mod-orient-layer><div class=mod-orient-layer__content><i class="icon mod-orient-layer__icon-orient"></i><div class=mod-orient-layer__desc>为了更好的体验，请使用竖屏浏览</div></div></div><script type=text/javascript>
+<!DOCTYPE HTML><html><head><title>路易十三瓶中世纪</title><meta http-equiv=Content-Type content="text/html; charset=utf-8"><meta name=format-detection content="telephone=no"><meta name=viewport content="width=device-width,initial-scale=1.0,user-scalable=0,minimum-scale=1.0,maximum-scale=1.0,minimal-ui"><meta name=apple-mobile-web-app-status-bar-style content=black><meta name=apple-mobile-web-app-capable content=yes><meta name=Keywords><meta name=Description content=...><link rel=stylesheet type=text/css href=css/all.min.css><script type=text/javascript src=js/main.min.js></script></head><body><div class=sharePrompt><a href=javascript:; class=shareClose><img src=img/close.png width=100%></a></div><div id=dreambox><div class=page><a href=javascript:; class=logo><img src=img/logo.png width=100%></a><div class=video><div class=poster><img src=img/poster.jpg width=100%></div><div id=mod_player></div><div class=wifiTips>*建议在Wi-Fi环境下欣赏</div></div><a href=javascript:; class="btn share_btn"><img src=img/share_btn.png width=100%></a></div></div><div id=orientLayer class=mod-orient-layer><div class=mod-orient-layer__content><i class="icon mod-orient-layer__icon-orient"></i><div class=mod-orient-layer__desc>为了更好的体验，请使用竖屏浏览</div></div></div><script type=text/javascript>
 
 ;(function($){
     $(function(){
 
-
-        var vidArr = ["m0018qv0vlz"];
-        var vPic = ["../img/poster.jpg"]
-
+        var vPic = "../img/poster.jpg";
         var player;
         var videoWidth = document.body.clientWidth*0.9;
         var videoHeight = videoWidth * (1080 / 1920);
-
+        var videoid;
         $(".video").css({"height":videoHeight});
 
         var videoFun = function(n){
             var video = new tvp.VideoInfo(); 
-            video.setVid(vidArr[n]);
+            video.setVid(n);
             player = new tvp.Player(); 
             player.create({
                 width: videoWidth + 'px',
                 height: videoHeight + 'px',
                 video: video,
-                pic: vPic[n],
+                pic: vPic,
                 modId:"mod_player", //mod_player是刚刚在页面添加的div容器 autoplay:true
                 onallended: function () {
                     //播放器播放完毕时
-                    $(".holder").fadeIn();
-                    videoFun("0");
+                    $(".poster").fadeIn();
+                    videoFun(videoid);
                 },
                 onpause: function () {
                     //播放器触发暂停时，目前只针对HTML5播放器有效
-                    $(".holder").fadeIn();
-                    videoFun("0");
+                    $(".poster").fadeIn();
+                    videoFun(videoid);
                 },
 
             });
 
-            $(".holder").click(function(){
-                $(".holder").hide();
-                player.enterFullScreen();
-                player.play();
-            })
 
         }
 
 
-        videoFun("0");
+        $.map(guests, function(v, k){
+            if(v.id == cid){
+               videoFun(v.vid);
+               videoid = v.vid;
+            }
+        })
 
+        $(".poster").click(function(){
+            $(".poster").hide();
+            player.enterFullScreen();
+            player.play();
+        })
+        
 
     })
 
 })(jQuery)
 
-
-    var swiper = new Swiper('.swiper-container', {
-        pagination: '.swiper-pagination',
-        paginationClickable: '.swiper-pagination',
-        nextButton: '.swiper-button-next',
-        prevButton: '.swiper-button-prev',
-        spaceBetween: 30
-    });
 </script></body></html>
