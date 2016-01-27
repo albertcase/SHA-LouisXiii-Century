@@ -13,7 +13,7 @@
             if(v.vid){
                 $(".video_btn").css("display", "inline-block");
                 touch.on(target, 'swipeup', function(ev){
-                    window.location.href = "video.html";
+                    window.location.href = "video.html?id=" + cid;
                 });
             }else{
                 $(".share_btn").css("display", "inline-block");
