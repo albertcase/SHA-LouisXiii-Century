@@ -24,7 +24,7 @@ function jssdkCallback(data){
 } 
 
 var shareData = {
-        title: guestsInfo["name"] + '在路易十三原创影片《100 YEARS 》香港揭秘仪式上的采访片段。',
+        title: guestsInfo["name"] + '在路易十三原创影片《100 YEARS》香港揭秘仪式上的采访片段。',
         desc: '路易十三《100 YEARS》',
         link: window.location.host + "/sha-louisxiii-century?id=" + guestsInfo["id"],
         imgUrl: 'http://' + window.location.host + '/sha-louisxiii-century/img/share.jpg'
@@ -32,7 +32,7 @@ var shareData = {
 
 function wechatShare(appid_val, timestamp_val, nonceStr_val, signature_val){
   wx.config({
-      debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+      debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
       appId: appid_val, // 必填，公众号的唯一标识
       timestamp: timestamp_val, // 必填，生成签名的时间戳
       nonceStr: nonceStr_val, // 必填，生成签名的随机串
