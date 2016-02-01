@@ -84,6 +84,9 @@ function wechatShare(appid_val, timestamp_val, nonceStr_val, signature_val){
         imgUrl: shareData.imgUrl, // 分享图标
         success: function () {
             // 用户确认分享后执行的回调函数
+            if($(".sharePrompt").size() > 0){
+                $(".sharePrompt").hide();
+            }
             _hmt.push(['_trackEvent', 'share', 'ShareTimeline']);
             //alert('分享成功');
         },
@@ -101,6 +104,9 @@ function wechatShare(appid_val, timestamp_val, nonceStr_val, signature_val){
         desc: shareData.desc,
         success: function () { 
             // 用户确认分享后执行的回调函数
+            if($(".sharePrompt").size() > 0){
+                $(".sharePrompt").hide();
+            }
             _hmt.push(['_trackEvent', 'share', 'ShareAppMessage']);
             //alert('分享成功');
         },
