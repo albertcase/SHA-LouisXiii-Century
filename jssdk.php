@@ -4,7 +4,9 @@ $appid = "wx58a67f867fcafc39";
 $time=file_get_contents("time.txt");
 $ticket=file_get_contents("ticket.txt");
 if (time()>=$time) {
-	$access_token = file_get_contents("http://wx.bysoftchina.com.cn/wx-token/token.php");
+	$access_token_file = file_get_contents("access_token.php");
+	$access_token_file = json_decode($access_token_file, true);
+	$access_token = $access_token_file['access_token'];
 	$ticketfile = file_get_contents("https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=".$access_token."&type=jsapi");
 	$ticketfile = json_decode($ticketfile, true);
 	$ticket = $ticketfile['ticket'];

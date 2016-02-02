@@ -1,6 +1,8 @@
 <?php
 ini_set("display_errors", 1);
-$access_token = file_get_contents("http://wx.bysoftchina.com.cn/wx-token/token.php");
+$access_token_file = file_get_contents("access_token.php");
+$access_token_file = json_decode($access_token_file, true);
+$access_token = $access_token_file['access_token'];
 echo $access_token;
 echo "</br>1</br>";
 $ticketfile = file_get_contents("https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=".$access_token."&type=jsapi");
