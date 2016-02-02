@@ -5,7 +5,12 @@ $time =file_get_contents("access_token_time.txt");
 $access_token=file_get_contents("access_token.txt");
 $array = array();
 if (time() >= $time){
-	$rs = file_get_contents('https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid='.$appid.'&secret='.$secret);
+	$ch = curl_init();
+	curl_setopt($ch, CURLOPT_URL, 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid='.$appid.'&secret='.$secret);
+	curl_setopt($ch, CURLOPT_HEADER, 0);
+	$rs = curl_exec($ch);
+	curl_close($ch);
+	//$rs = file_get_contents('https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid='.$appid.'&secret='.$secret);
 	$rs = json_decode($rs,true);
 	if(isset($rs['access_token'])){
 		$time = time() + $rs['expires_in'];

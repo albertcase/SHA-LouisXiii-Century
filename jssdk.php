@@ -8,7 +8,12 @@ if (time()>=$time) {
 	$access_token_file = file_get_contents($request_url."access_token.php");
 	$access_token_file = json_decode($access_token_file, true);
 	$access_token = $access_token_file['access_token'];
-	$ticketfile = file_get_contents("https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=".$access_token."&type=jsapi");
+	$ch = curl_init();
+	curl_setopt($ch, CURLOPT_URL, "https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=".$access_token."&type=jsapi");
+	curl_setopt($ch, CURLOPT_HEADER, 0);
+	$ticketfile = curl_exec($ch);
+	curl_close($ch);
+	//$ticketfile = file_get_contents("https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=".$access_token."&type=jsapi");
 	$ticketfile = json_decode($ticketfile, true);
 	$ticket = $ticketfile['ticket'];
 	$time = time()+ $ticketfile['expires_in'];
