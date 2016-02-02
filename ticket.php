@@ -1,6 +1,7 @@
 <?php
+$request_url=str_replace("ticket.php","",'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF']);
 ini_set("display_errors", 1);
-$access_token_file = file_get_contents("access_token.php");
+echo $access_token_file = file_get_contents($request_url."access_token.php");
 $access_token_file = json_decode($access_token_file, true);
 $access_token = $access_token_file['access_token'];
 echo $access_token;

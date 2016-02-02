@@ -1,7 +1,7 @@
 <?php
 $appid = 'wx58a67f867fcafc39';
 $secret = '4fa9a62da0cc3c2b94053ae76e14f5f7';
-$time=file_get_contents("access_token_time.txt");
+$time =file_get_contents("access_token_time.txt");
 $access_token=file_get_contents("access_token.txt");
 $array = array();
 if (time() >= $time){
