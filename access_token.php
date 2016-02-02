@@ -24,7 +24,7 @@ if (time() >= $time){
 		$array['expires_in'] = $rs['expires_in'];
 		$array['access_token'] = $rs['access_token'];		
 	}else{
-		throw new Exception($rs['errcode']);
+		//throw new Exception($rs['errcode']);
 	}
 } else {
 	$array['expires_in'] = $time-time();
