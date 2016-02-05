@@ -24,8 +24,8 @@ function jssdkCallback(data){
 } 
 
 var shareData = {
-        title: guestsInfo["name"] + '在路易十三原创影片《100 YEARS》香港揭秘仪式上的采访片段。',
-        desc: '路易十三《100 YEARS》',
+        title: '路易十三献给'+guestsInfo["name"]+'的新年祝福。',
+        desc: '彼时盛典历历在目；此刻分享精彩回忆；未来我们再造100年',
         link: window.location.host + "/sha-louisxiii-century?id=" + guestsInfo["id"],
         imgUrl: 'http://' + window.location.host + '/sha-louisxiii-century/img/share.jpg'
 };
